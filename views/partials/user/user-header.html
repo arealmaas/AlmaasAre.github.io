@@ -1,0 +1,21 @@
+<h1>{{user.firstname}} {{user.lastname}}</h1>
+
+
+
+<div class="span12">
+	
+	<div ng-show="user.cover" class="user-cover">
+		<img ng-src="{{user.cover}}" alt="Forsidebilde">
+	</div>
+	<div ng-show="user.image" class="user-image">
+		<img src="{{user.image}}" alt="Profilbilde">
+	</div>
+
+	<a ng-show="myPage" href="#/" class="btn btn-primary" ng-show="Authentication.isLoggedIn() && current.User.getId() === user.id" ng-click="Authentication.logOff()">
+	Logg ut
+	</a>
+
+	<a ng-show="myPage" href="#/" class="btn btn-primary" ng-show="Authentication.isLoggedIn() && current.User.getId() === user.id">
+	<i class="icon-cog"></i> Administrer konto
+	</a>
+</div>

@@ -1,0 +1,11 @@
+<div class="lecture-view">
+	<h1>This is the lecture view.</h1>
+	
+	
+	<div ng-repeat="content in contents">
+		<h2>{{content.title}}</h2>
+		<content-component media-type="content.mediaType" media-id="content.mediaId"></content-component>		
+	</div>
+	
+	<comments-component thread-id="lecture{{lecture.id}}" type="disqus" permalink-url="/#!{{location.path()}}"></comments-component>
+</div>

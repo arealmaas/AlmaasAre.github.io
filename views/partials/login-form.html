@@ -1,0 +1,49 @@
+<div class="login-form">
+    
+    <p>Logg inn med din eksisterende konto: </p>
+    <ng-include src="'views/partials/external-login-buttons.html'"></ng-include>
+    <hr>
+
+    <form name="loginform" novalidate ng-hide="Authentication.isLoggedIn()" ng-submit="logIn(username, password, rememberme)">
+
+        <div>
+            <label for="input-username">
+            	Brukernavn (e-post)
+            </label>
+            <div>
+                <span class='input-field-wrapper'>
+                    <input name="email" type="email" id="input-username" placeholder="E-post..." ng-model="username" required>
+                    <i class='icon-ok' ng-show='loginform.email.$valid'></i>
+                    <i class='icon-remove' ng-hide='loginform.email.$valid'></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <label for="input-password">
+            	Passord
+            </label>
+            <div>
+                <span class='input-field-wrapper'>
+                    <input type="password" name="password" id="input-password" placeholder="Passord..." ng-model="password" required ng-pattern="/[\w]{6,25}/"> 
+                    <i class='icon-ok' ng-show='loginform.password.$valid'></i>
+                    <i class='icon-remove' ng-hide='loginform.password.$valid'></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <div>
+
+                <!-- <label class="checkbox"><input type="checkbox" ng-model="rememberme">
+                	Husk meg
+                </label>  -->
+                <button ng-disabled='!loginform.$valid || loginInProgess' class="btn btn-primary" type="submit">Logg inn <img width="20px" src="/images/loader-horizontal.gif" ng-show='loginInProgess' alt=""></button>
+                <hr>
+                
+                <p>Har du ingen bruker?</p>
+
+                <button type="button" class="btn btn-primary btn-block" ng-click="currentPanel.setState('register')">Gi meg en konto</button>
+               
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,8 @@
+<div class="conversations-component clearfix">
+	
+	<div class="conversations-group clearfix">
+		<tile-component tile-object="conversation.tile"
+						ng-repeat="conversation in conversations | filter: {tile.title: searchQuery}"></tile-component>
+	</div>
+
+</div>

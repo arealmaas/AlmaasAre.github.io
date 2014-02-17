@@ -1,0 +1,69 @@
+<div class="content-view navbar" bs-navbar>
+
+    <div class="animated fadeIn">
+        
+        <div class="header">
+            <h1>
+                <back-button-component></back-button-component>
+                <button class="edit-button" ng-click="enableEditmode()" ng-show="editPermissions.getIsAdmin() && !editPermissions.getIsNew() && !editPermissions.getEditMode()"></button>
+                <button ng-click="save()" ng-show="editPermissions.getEditMode() || editPermissions.getIsNew()" class="save-button"></button>
+                <div editable="{{editPermissions.getEditMode() || editPermissions.getIsNew()}}" class="title" ng-model="content.title"></div>
+            </h1>
+            
+		    <a ng-if="content.downloadUrl" href="{{content.downloadUrl}}" class="btn btn-primary pull-right">Last ned</a>
+
+            <!-- <div ng-if="editPermissions.getEditMode()">
+                <dropbox-chooser-button-component choose-callback="dbCb"></dropbox-chooser-component> 
+            </div+> -->
+            
+            <div ng-if="editPermissions.getEditMode() || editPermissions.getIsNew()">
+                <input type="text" name="" id="" ng-model="content.downloadUrl" placeholder="Nedlastningslenke">
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="main-content">
+                <div ng-show="editPermissions.getEditMode() || editPermissions.getIsNew()">
+                    <input type="text" class="content_url_input" ui-keypress="{13: 'showPreview()'}" autofocus ng-class="{short: video}" ng-model="contentUrl" placeholder="Innholdslenke" />
+                    <div ng-if="video">
+                        <input type="number" class="video_start_input" ng-model="video_start" placeholder="Start på (sekunder)" />
+                    </div>
+                </div>
+
+                <content-component ng-if="newMediaId || mediaId" media-id="{{newMediaId || mediaId}}" media-type="{{newMediaType || mediaType}}"></content-component>
+                
+                <div id="upload-dropbox" ng-show="(editPermissions.getEditMode() || editPermissions.getIsNew()) && !newMediaId && !mediaId">
+                    <span>Dra og slipp en fil her for å laste opp eller
+                    <br>
+                    <button class="btn btn-primary" id="upload-file" ng-click="uploadFile()">Velg en fil, ta et bilde eller velg en annen kilde</button>
+                </span>
+                </div>
+                
+                <button ng-show="editPermissions.getEditMode() && !editPermissions.getIsNew()" ng-click="delete_content()" class="btn btn-danger" show-tooltip="Advarsel! Fjerner original innholslenke!" tooltip-pos="right">Slett original</button>
+
+                <!-- <button ng-show="newMediaId" ng-click="delete_newContent()" class="btn btn-danger" show-tooltip="Advarsel! Fjerner innholslenke!" tooltip-pos="right">Fjern nåværende</button> -->
+                
+                
+                
+
+                <h2>Info</h2>
+
+                <div editable="{{editPermissions.getEditMode() || editPermissions.getIsNew()}}" class="content_info" ng-model="content.description"></div>
+
+            </div>
+
+            <div class="right-content">
+                <h3>Kommentarer</h3>
+                <comments-component ng-if="!editPermissions.getIsNew()" thread-id="content{{content.id}}" type="disqus"></comments-component>
+                <div ng-if="editPermissions.getIsNew()">
+                    <i>Her kommer kommentarene når innholdet er publisert.</i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+
+

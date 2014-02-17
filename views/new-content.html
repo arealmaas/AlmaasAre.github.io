@@ -1,0 +1,35 @@
+<div class="new-content-view navbar" bs-navbar>
+
+    <div id="fullscreen-content">
+        
+        <div class="header">
+			<h1> <a ng-click="history_back()" class="back-button"></a><a ng-click="save()" class="save-button"></a> <div editable="{{editMode}}" ng-model="header"></div></h1>
+        </div>
+        <div class="body clearfix">
+            <div class="main-content">
+                <input type="text" class="content_url_input" autofocus ng-class="{short: video}" ng-model="content_input" placeholder="{{content_input_placeholder}}" />
+                
+                <div ng-if="video">
+                    Start på (sekunder): 
+                    <input type="number" class="video_start_input" autofocus ng-model="video_start" />
+                </div>
+                
+                <content-component ng-if="show_preview" media-id="{{mediaId}}" media-type="{{mediaType}}"></content-component>
+                
+                <div ng-if="!show_preview">
+                    <i>Venter på en gyldig innholdslenke...</i>
+                </div>
+
+                <div ng-include src="'views/partials/content/content-info.html'"></div>
+            </div>
+            <div class="right-content">
+                <h2>Kommentarer</h2>
+                <div>
+                	<i>Her kommer kommentarene når innholdet er publisert.</i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div> 

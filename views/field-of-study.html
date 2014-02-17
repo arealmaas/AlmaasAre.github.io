@@ -1,0 +1,19 @@
+<div class="field-of-study-view">
+	<div class="field-of-study-header row-fluid">
+		<div class="span12" ng-include src="'views/partials/header-partial.html'"></div>
+	</div>	
+	
+	<hr>
+
+	<div ng-hide="editPermissions.getIsNew()" class="field-of-study-course-wrapper span12">
+		<h3 ng-if="tiles.length || editPermissions.hasEditPermission()">Fag</h3>
+		<tile-component ng-repeat="tile in tiles" tile-object="tile" class="one-third-tile"></tile-component>
+		<tile-component ng-if="editPermissions.hasEditPermission() && !editPermissions.getIsNew()" tile-object="createTile['FieldsOfStudy']"></tile-component>
+		<!-- <p ng-hide="tiles"><i>Ingen fag å vise for denne studieretningen.</i></p> -->
+	</div>
+
+	<div class="clearfix"></div>
+	
+	<hr>
+	<comments-component ng-if="!editPermissions.getIsNew()" thread-id="fieldOfStudy{{fieldOfStudy.id}}" type="disqus" permalink-url="/#!{{location.path()}}"></comments-component>
+</div>

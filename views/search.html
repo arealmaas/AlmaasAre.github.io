@@ -1,0 +1,31 @@
+<div class="search-view">
+	<h1>
+		<back-button-component></back-button-component>
+		Søk
+	</h1>
+	<p class="lead" ng-show="searchQuery.length">Søker etter <i>{{searchQuery}}</i></p>
+	
+	<hr>
+	
+	<h1>Fag</h1>
+	<div class="row-fluid">
+		<p><i ng-hide="courseTiles.length">Ingen fag å vise..</i></p>
+		<tile-component tile-object="tile" ng-repeat="tile in courseTiles"></tile-component>
+
+	</div>
+	
+	<h1>Emner</h1>
+	<div class="row-fluid">
+		<p><i ng-hide="topicTiles.length">Ingen emner å vise..</i></p>
+		<tile-component tile-object="tile" ng-repeat="tile in topicTiles"></tile-component>	
+
+	</div>
+	
+	<h1>Innhold</h1>
+	<div class="row-fluid">
+		<p><i ng-hide="contentTiles.length">Ingen innhold å vise..</i></p>
+		<tile-component tile-object="tile" ng-repeat="tile in contentTiles"></tile-component>
+
+	</div>
+
+</div>

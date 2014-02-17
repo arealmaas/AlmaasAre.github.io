@@ -1,0 +1,7 @@
+<div class="subscribe-button-component unselectable">
+<button ng-disabled="buttonDisabled" class="btn" ng-click="toggleSubscribtion()" ng-class="{'btn-success active': subscribed(), 'btn-primary': !subscribed()}">
+	<i ng-show="subscribed()" class="icon-heart"></i>
+	<i ng-hide="subscribed()" class="icon-heart-empty"></i>
+	{{buttonText}}
+</button>
+</div>

@@ -1,0 +1,18 @@
+<div class="fp-panel fp-my-subscriptions" ng-controller="fpPanelMySubscriptionsCtrl">
+	<div class="tile-group clearfix">
+		<button class="btn btn-primary" ng-class="{active:showCourses}" ng-click="filter('course')">Fag</button>
+		<button class="btn btn-primary" ng-class="{active:showFos}" ng-click="filter('fos')">Studieretninger</button>
+		<button class="btn btn-primary" ng-class="{active:showSchools}" ng-click="filter('school')">Skoler</button>
+
+		<hr>
+		<div class="course-wrapper" ng-show="showCourses">
+			<tile-component tile-object="tile" ng-repeat="tile in current.User.getCourseTiles()"></tile-component>
+		</div>
+		<div class="schools-wrapper" ng-show="showSchools">
+			<tile-component tile-object="tile" ng-repeat="tile in current.User.getSchoolTiles()"></tile-component>
+		</div>
+		<div class="fos-wrapper" ng-show="showFos">
+			<tile-component tile-object="tile" ng-repeat="tile in current.User.getFosTiles()"></tile-component>
+		</div>
+	</div>
+</div>

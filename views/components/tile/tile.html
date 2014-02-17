@@ -1,0 +1,16 @@
+<div class="tile-component {{tile.style}}">
+	<a class="tile-link" href="{{tile.link.href}}" title="{{tile.link.tooltip}}" ng-click="tile.ngClick()">
+	<div class="tile-content">
+			<h2 ng-if="tile.title" class="tile-title">{{tile.title}}</h2>
+			<img class="tile-image" ng-src="{{tile.image}}" alt="tile image" ng-if="tile.image" />
+			<p class="tile-text {{tileText.textClass}}" ng-show="tile.textArray" ng-repeat="tileText in tile.textArray">{{tileText.text}}</p>
+			<p class="tile-timestamp {{tile.timestampClass}}" ng-show="tile.timestamp">{{tile.timestamp}}</p>
+			<div class="brand {{tile.brand.brandClass}}" ng-if="tile.brand">
+				<img class="icon" ng-src="{{tile.brand.icon}}" ng-if="tile.brand.icon" />
+				<p class="text {{tile.brand.brandTextClass}}" ng-if="tile.brand.text">{{tile.brand.text}}</p>
+				<span class="name" ng-if="tile.brand.name">{{tile.brand.name}}</span>
+				<div class="tile-badge {{tile.brand.badgeClass}}" ng-if="tile.brand.badge">{{tile.brand.badge}}</div>
+			</div>
+	</div>
+	</a>
+</div>

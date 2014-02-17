@@ -1,0 +1,15 @@
+<div class="newsfeed-partial-wrapper" ng-if="headerPartial.newsfeed.length || editPermissions.getEditMode()">
+	<hr>
+	
+	<h2>Nyheter</h2>
+
+	<a href ng-if="editPermissions.hasEditPermission()" class="newspost create-new" ng-click="newspostsMixin.createNews()" aria-role="button"><strong>Opprett ny nyhet</strong></a>
+
+	<div class="inner-wrapper">
+		<div class="newspost" ng-class="{'is-dirty': newswrapper.$dirty}" ng-repeat="news in headerPartial.newsfeed">
+			<form name="newswrapper">
+				 <ng-include src="'views/partials/newsfeed-post.html'"></ng-include>
+			</form>
+		</div>
+	</div>
+</div>

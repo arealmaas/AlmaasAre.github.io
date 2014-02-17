@@ -1,0 +1,10 @@
+<div class="topic-component">
+	<!-- Topic burde bruke tiles komponenten! -->
+	<h1><a href="#/topics/{{topicData.id}}" >{{topicData.title}}</a></h1>
+
+	<p>{{topicData.description}}</p>
+
+	<ul>
+		<li ng-repeat="content in topicData.contents"><a href="#/topics/{{topicData.id}}/content/{{content.id}}">{{content.title}}</a></li>
+	</ul>
+</div>

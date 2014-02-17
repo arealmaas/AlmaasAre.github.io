@@ -1,0 +1,18 @@
+<div class="navbar navbar-component" bs-navbar>
+	<div class="navbar-inner">
+		<div class="container">
+		
+			<a class="brand" href="#/">
+				<img class="small-logo visible-phone" src="/images/logo_icon.png" alt="" width="30px" height="auto">
+				<img class="large-logo hidden-phone" src="/images/logo_full.png" alt="" width="150px" height="auto">
+			</a>
+
+			<form class="navbar-search pull-left" ng-submit="search(searchQuery)">
+				<input type="text" name="q" ng-model="searchQuery" placeholder="Søk...">
+			</form>
+
+			<div class="loader" ng-class="{'view-loading': viewLoading}"></div>
+			
+		</div>
+	</div>
+</div>

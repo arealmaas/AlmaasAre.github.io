@@ -1,0 +1,8 @@
+<div class="typeahead-token-component">
+	<div class="fake-input-wrapper">
+		<i class="icon-search"></i>
+		<span class="selected-token unselectable" ng-show="token" class="text">{{token}} <a href ng-click="token=undefined">&times;</a></span>
+
+		<input type="text" ng-hide="token" ng-model="token" typeahead="suggestion for suggestion in suggestions | filter:$viewValue">
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<div class="field-of-study-title">
+	<h1><a href="" ng-click="history_back()" class="back-button"></a>{{fieldOfStudy.title}}</h1>
+</div>
+<hr/>
+
+<div ng-if="userhasEditRights" class="field-of-study-editbar span12">
+	<span ng-show="editMode" class="badge badge-important">Editerer</span>
+	<a ng-hide="editMode" href="#/fieldsofstudy/{{fieldOfStudy.id}}?edit"><img src="http://static.studentportalen.no/images/ico-moon/cog.png" alt="Editer"></a>
+	<a ng-show="editMode" href="#/fieldsofstudy/{{fieldOfStudy.id}}">Avbryt</a>
+	<a ng-show="editMode" href="#/fieldsofstudy/{{fieldOfStudy.id}}">Lagre</a>
+</div>
+
+<div class="field-of-study-banner span12" ng-show="fieldOfStudy.banner.length">
+	<img ng-src="{{fieldOfStudy.banner}}" alt="field-of-study.title">
+</div>
+
+<div class="row-fluid field-of-study-info-wrapper">
+	<div class="field-of-study-info span9">
+		<div ng-show="fieldOfStudy.description.length" class="field-of-study-short-info">
+			<h6 editable="{{editMode}}" ng-model="fieldOfStudy.description"></h6>
+		</div>
+		<div class="field-of-study-long-info" ng-show="fieldOfStudy.information.length">
+			
+			<div ng-repeat="info in fieldOfStudy.information">
+				<h6 editable="{{editMode}}" ng-model="info.heading"></h6>
+				<!-- NG-REPEAT: Content should be a array of strings. For multiple paragraphs. -->
+				<p editable="{{editMode}}" ng-model="info.content"></p>
+			</div>
+		</div>	
+	</div>
+
+	<div class="field-of-study-facts span3" ng-show="fieldOfStudy.facts.length">
+		
+		<h6>Fakta om studiet</h6>
+
+		<div ng-show="fieldOfStudy.facts.length" ng-repeat="fact in fieldOfStudy.facts">
+			<strong editable="{{editMode}}" ng-model="fact.heading"></strong>
+			<div ng-repeat="content in fact.content">	
+				<span editable="{{editMode}}" ng-model="content"></span><br>
+			</div>
+			<br>
+		</div>
+	</div>
+</div>

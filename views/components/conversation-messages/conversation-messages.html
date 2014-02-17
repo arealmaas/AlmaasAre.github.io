@@ -1,0 +1,18 @@
+<div class="conversation-messages-component clearfix">
+	<div ng-show='conversationMessages.filter.conversationId != " "' class='input-append' id="conversation-search">
+		<input type="text" placeholder="Meldingssøk..." ng-model="conversationMessages.filter.messageSearchQuery">
+		<span class="add-on"><i class="icon-search"></i></span>
+	</div>
+	<div class="message-group clearfix">
+		<h1 ng-show="model.userModel.isLoggedIn">User authenticated!</h1>
+		<tile-component tile-object="message.message"
+			ng-repeat="message in conversationMessages | filter: {message.conversationId: conversationMessages.filter.conversationId, message.textArray: conversationMessages.filter.messageSearchQuery}"></tile-component>
+	</div>
+
+	
+	
+	<div id='input-container' ng-show='conversationMessages.filter.conversationId != " "'>
+		<textarea type="text" class="message-input" ng-model="newMessageText" ui-keypress="{13:'sendMessage($event)'}"></textarea>
+		<a href ng-click="sendMessage()" class="btn btn-primary">Send</a>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div class="notifications-component">
+	<ul>
+		<li class="notification" ng-repeat="notification in notifications" ng-animate="'fadeDown'">
+			<a href="{{notification.link}}" title="{{notification.timestamp | date:'fullDate'}}">
+				<ul>
+					<li class="type {{notification.type}}"><span></span></li>
+					<li class="text">{{notification.text}}</li>
+					<li class="timestamp">For {{notification.timestamp | timeSince}} siden</li>
+				</ul>
+			</a>
+		</li>
+	</ul>
+	
+	<p class="lead" ng-hide="notifications.length">
+		Du har ingen varsler
+	</p>
+</div>

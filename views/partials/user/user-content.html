@@ -1,0 +1,28 @@
+<div class="user-content">
+	<h3 ng-show="myPage">Mitt innhold</h3>
+	<h3 ng-hide="myPage">Innhold</h3>
+
+	<div class="tile-group clearfix">
+		<button class="btn btn-primary" ng-class="{active:showContents}" ng-click="filter('content')">Innhold</button>
+		<button class="btn btn-primary" ng-class="{active:showTopics}" ng-click="filter('topic')">Emner</button>
+		<button class="btn btn-primary" ng-class="{active:showCourses}" ng-click="filter('course')">Fag</button>
+
+		<hr>
+		<div class="content-wrapper" ng-show="showContents">
+			<tile-component tile-object="tile" ng-repeat="tile in contentTiles"></tile-component>
+			<tile-component ng-if="(editPermissions.getIsAdmin() && !editPermissions.getIsNew()) && myPage" tile-object="createTile['Contents']"></tile-component>
+			<h5 ng-if="!contentTiles.length && !myPage">Ikke noe innhold å vise</h5>
+		</div>
+		<div class="topic-wrapper" ng-show="showTopics">
+			<tile-component tile-object="tile" ng-repeat="tile in topicTiles"></tile-component>
+			<tile-component ng-if="(editPermissions.getIsAdmin() && !editPermissions.getIsNew()) && myPage" tile-object="createTile['Topics']"></tile-component>
+			<h5 ng-if="!topicTiles.length && !editPermissions.getIsAdmin() && !myPage">Ingen emner å vise</h5>
+		</div>
+		<div class="course-wrapper" ng-show="showCourses">
+			<tile-component tile-object="tile" ng-repeat="tile in courseTiles"></tile-component>
+    		<tile-component ng-if="(editPermissions.getIsAdmin() && !editPermissions.getIsNew()) && myPage" tile-object="createTile['Courses']"></tile-component>
+
+			<h5 ng-if="!courseTiles.length && !editPermissions.getIsAdmin() && !myPage">Ingen fag å vise</h5>
+		</div>
+	</div>	
+</div>

@@ -1,0 +1,28 @@
+<div class="school-view">
+
+	<div class="school-header">
+		<div ng-include src="'views/partials/school/school-header.html'"></div>	
+	</div>
+
+	<div ng-include src="'views/partials/newsfeed.html'"></div>
+	
+	<hr>
+
+	<div class="row-fluid">
+		<div class="span12 school-fos-wrapper">
+
+			<h2>Studieretninger</h2>
+
+			<p ng-hide="school.fieldsofstudy.length"><i>Ingen studiretninger å vise for denne skolen.</i></p>
+
+			<tile-component tile-object="tile" ng-repeat="tile in fosTiles"></tile-component>
+
+			<tile-component ng-if="editPermissions.getIsAdmin() && !editPermissions.getIsNew()" tile-object="createTile['Schools']"></tile-component>
+		
+		</div>
+	</div>
+
+	<hr>
+	
+	<comments-component thread-id="school{{school.id}}" type="disqus" permalink-url="/#!{{location.path()}}"></comments-component>
+</div>

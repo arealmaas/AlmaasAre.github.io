@@ -1,0 +1,27 @@
+<div class="topic-view">
+	
+	<div class="header">
+		<h1>
+			<back-button-component></back-button-component>
+			<button class="edit-button" ng-click="enableEditmode()" ng-show="editPermissions.getIsAdmin() && !editPermissions.getIsNew() && !editPermissions.getEditMode()"></button>
+			<a ng-click="save()" class="save-button" ng-show="editPermissions.getEditMode()  || editPermissions.getIsNew()"></a>
+			<div class="title" editable="{{editPermissions.getEditMode() || editPermissions.getIsNew()}}" show-tooltip tooltip-enabled="{{editPermissions.getEditMode()}}" tooltip-pos="bottom"  ng-model="topic.title"></div>
+		</h1>
+		<button class="btn-primary" ng-click="delete()" ng-if="editPermissions.getEditMode()">Slett</button>
+		<div class="well description" editable="{{editPermissions.getEditMode() || editPermissions.getIsNew()}}" show-tooltip tooltip-pos="top" tooltip-enabled="{{editPermissions.getEditMode()}}" ng-model="topic.description"></div>
+	</div>
+	<hr>
+
+
+	<h2 ng-if="topic.content.length==0">Emnet inneholder ingen data</h2>
+
+	<div class="tile-group clearfix" id="gotoTarget">
+
+		<tile-component tile-object="tile" ng-repeat="tile in (filteredItems = (tiles | filter:searchText))" ></tile-component>
+		
+		<tile-component ng-if="editPermissions.hasEditPermission() && !editPermissions.getIsNew() && editPermissions.getEditMode()" tile-object="createTile['Topics']"></tile-component>
+
+	</div>
+	<hr>
+	<comments-component class="comments" ng-if="!editPermissions.getIsNew()" thread-id="topic{{course.id}}" type="disqus" permalink-url="/#!{{location.path()}}"></comments-component>
+</div>

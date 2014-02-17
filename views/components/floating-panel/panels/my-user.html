@@ -1,0 +1,13 @@
+<div class="fp-panel fp-my-user" ng-controller="fpPanelMyUserCtrl">
+	
+	<a class="btn btn-primary pull-right" href="#/users/me">Se profil</a>
+	<!-- <img ng-show="user.image" ng-src="{{user.image}}" alt="Profilbilde"/> -->
+	<h2>{{user.firstname}} {{user.lastname}}</h2>
+	<p><strong>Brukernavn:</strong> {{user.username}}</p>
+
+	<hr>
+
+	<button class="btn btn-primary" ng-click="Authentication.logOff()" ng-show="Authentication.isLoggedIn()">
+		Logg ut
+	</button>
+</div>

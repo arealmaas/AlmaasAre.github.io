@@ -1,0 +1,78 @@
+<div class="login-form">
+
+    <p>Logg inn med din eksisterende konto: </p>
+    <ng-include src="'views/partials/external-login-buttons.html'"></ng-include>
+    <hr>
+
+    <form name="form" ng-hide="Authentication.isLoggedIn()" novalidate ng-submit="register(firstname, lastname, email, password, rememberme)">
+        
+        <div>
+            <label for="input-firstname">
+                Fornavn
+            </label>
+            <div>
+                <span class='input-field-wrapper'>
+                    <input type="text" id="input-firstname" placeholder="Fornavn..." name="firstname" ng-model="firstname" required>
+                    <i class='icon-ok' ng-show='form.firstname.$valid'></i>
+                    <i class='icon-remove' ng-hide='form.firstname.$valid'></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <label for="input-lastname">
+                Etternavn 
+            </label>
+            <div>
+                <span class='input-field-wrapper'>
+                    <input type="text" id="input-lastname" placeholder="Etternavn..." name="lastname" ng-model="lastname" required>
+                    <i class='icon-ok' ng-show='form.lastname.$valid'></i>
+                    <i class='icon-remove' ng-hide='form.lastname.$valid'></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <label for="input-username">
+            	Brukernavn (e-post)
+            </label>
+            <div>
+                <span class='input-field-wrapper'>
+                    <input type="email" id="input-username" placeholder="Email..." name="email" ng-model="email" required>
+                    <i class='icon-ok' ng-show='form.email.$valid'></i>
+                    <i class='icon-remove' ng-hide='form.email.$valid'></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <label for="input-passord">
+            	Passord
+            </label>
+            <div>
+                <span class='input-field-wrapper'>
+                    <input name="password" type="password" id="input-passord" placeholder="Passord" ng-pattern="/[\w]{6,25}/" ng-model="password" required>
+                    <i class='icon-ok' ng-show='form.password.$valid'></i>
+                    <i class='icon-remove' ng-hide='form.password.$valid'></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <label for="input-passord">
+                Bekreft Passord
+            </label>
+            <div>
+                <span class='input-field-wrapper'>
+                    <input name="password_confirmation" type="password" id="input-passord" placeholder="Passord" ng-model="password_confirmation" password-validate="password" required>
+                    <i class='icon-ok' ng-show='form.password_confirmation.$valid'></i>
+                    <i class='icon-remove' ng-hide='form.password_confirmation.$valid'></i>
+                </span>
+            </div>
+        </div>
+        <div>
+            <hr>
+                <button ng-disabled='!form.$valid || registerInProgess' class="btn btn-primary pull-right" type="submit">Registrer <img width="20px" src="/images/loader-horizontal.gif" ng-show='registerInProgess' alt=""></button>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+    <hr>
+    <p>Har du en konto fra før?</p>
+    <button class="btn" ng-click="currentPanel.setState('log-in')">Logg inn her</button>
+</div>

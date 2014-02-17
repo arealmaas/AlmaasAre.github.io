@@ -1,0 +1,32 @@
+<div class="course-view">
+	<div class="course-header row-fluid">
+		<div class="span12" ng-include src="'views/partials/header-partial.html'"></div>
+	</div>
+
+	<hr>
+	
+	<div class=""  ng-if="!editPermissions.getIsNew()">
+
+		<div class="course-content row-fluid">
+			<div class="course-topics span12">
+				<div class="course-long-info">
+					<h2>Emner</h2>
+					<div class="tile-group clearfix">
+						<tile-component tile-object="tile" ng-repeat="tile in courseTiles"></tile-component>
+						<tile-component ng-if="editPermissions.hasEditPermission() && !editPermissions.getIsNew()" tile-object="createTile['Courses']"></tile-component>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		
+		<div class="clearfix"></div>
+		<hr>
+
+		<div class="row-fluid">
+			<div class="course-comments span12">
+				<comments-component thread-id="course{{course.id}}" type="disqus"></comments-component>
+			</div>
+		</div>
+	</div>
+</div>

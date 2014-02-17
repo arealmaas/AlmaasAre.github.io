@@ -1,0 +1,10 @@
+<hr>
+<h3 editable="{{editPermissions.getEditMode()}}" placeholder="Fyll inn tittel" ng-model="news.title"></h3>
+<div ng-show="editPermissions.getEditMode()">
+	<button class="btn btn-primary save-btn" ng-click="newspostsMixin.savePost(news)" ng-show="newswrapper.$dirty">Lagre</button>
+	<!-- <button class="btn reset-btn" ng-click="newspostsMixin.reset(news)" ng-show="newswrapper.$dirty">Avbryt redigering</button> -->
+	<button class="btn delete-btn" ng-click="newspostsMixin.deletePost(news)">Slett</button>
+</div>
+<p>{{news.date | date:'fullDate'}}</p>
+<p><strong editable="{{editPermissions.getEditMode()}}" ng-model="news.lead" placeholder="Fyll inn ingress" ></strong></p>
+<p editable="{{editPermissions.getEditMode()}}" ng-model="news.content" placeholder="Fyll inn innhold"></p>

@@ -1,0 +1,10 @@
+<div class="login-view">
+    <h1>
+        Logg inn
+    </h1>
+    <hr>
+    <div class="login" ng-include src="'/views/partials/login-form.html'"></div>
+    <hr>
+	 <button class="btn btn-primary" type="submit" ng-click="current.User.logInFacebook()">Facebook</button>
+	  <button class="btn btn-primary" type="submit" ng-click="current.User.logInTwitter()">Twitter</button>
+</div>

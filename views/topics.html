@@ -1,0 +1,14 @@
+<div class="topics-view">
+
+	<h1><back-button-component></back-button-component></a> Emner</h1>
+	
+	<hr>
+
+	<p>Oversikt over alle emner</p>
+
+	<input type="text" ng-show="topics.length" placeholder="Søk..." autofocus ng-model="searchText" goto-on-enter goto-target="#gotoTarget">
+
+	<div id="gotoTarget" class="tile-group clearfix">
+		<tile-component tile-object="tile" ng-repeat="tile in (filteredItems = (topics | filter:searchText))" ></tile-component>
+	</div>
+</div>

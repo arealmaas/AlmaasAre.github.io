@@ -1,0 +1,53 @@
+<h1 class="title">
+	<back-button-component></back-button-component>
+    <!-- <button class="edit-button" ng-click="enableEditmode()" ng-show="editPermissions.getIsAdmin()"></button> -->
+	<a ng-show="editPermissions.getEditMode()" ng-click="save()" class="save-button"></a>
+	<div editable="{{editPermissions.getEditMode()}}" ng-model="school.title" placeholder="Fyll inn skolens navn"></div>
+</h1>
+
+<hr>
+
+<div class="clearfix"></div>
+
+<div class="school-image span12" ng-show="school.image">
+	<img ng-src="//{{school.image}}"/>
+</div>
+
+<div class="row-fluid">
+	<div class="school-info-wrapper span12">
+
+		<div class="school-info">
+			<address>
+
+				<div class="row-fluid">
+					<div class="span6">
+
+						<strong editable="{{editPermissions.getEditMode()}}" ng-model="school.title" placeholder="Fyll inn skolens navn"></strong>
+						<p editable="{{editPermissions.getEditMode()}}" ng-model="school.address" placeholder="Fyll inn skolens adresse"></p>
+					</div>
+
+					<div class="span6">
+						<p editable="{{editPermissions.getEditMode()}}" placeholder="Fyll inn tilleggsinformasjon" ng-model="school.additionalInfo"></p>
+	 						
+						<p editable="{{editPermissions.getEditMode()}}" class="school-description" placeholder="Fyll inn forklaring" ng-model="school.description"></p>
+
+					</div>
+				</div>
+				
+				<div class="row-fluid">
+					<div class="span12">
+							<p ng-show="school.telephone.length || editPermissions.getEditMode()"><b>Tlf:</b> <span editable="{{editPermissions.getEditMode()}}" placeholder="Fyll inn skolens telefonnummer" ng-model="school.telephone"></span></p>
+
+							<a href="#/messages/?recipient=hioa">
+								<i class="icon-envelope"></i> Send melding 
+							</a>
+						</p>
+					</div>
+				</div>
+			</address>
+		</div>
+		<br>
+		<subscribe-button-component subscription-type="school" subscription-id="{{school.id}}"></subscribe-button-component>
+	</div>
+</div>
+ 

@@ -1,0 +1,51 @@
+<div class="header-partial">
+	<div class="row-fluid">
+		<div class="header-partial-title span12">
+			<h1><back-button-component></back-button-component>
+				<button ng-show="editPermissions.getEditMode() || editPermissions.getIsNew()" ng-click="save()" class="save-button"></button>
+				<div class="title" editable="{{editPermissions.getEditMode() || editPermissions.getIsNew()}}" ng-model="headerPartial.title" placeholder="Fyll inn tittel"></div></h1>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row-fluid">
+		<div class="header-partial-banner span12" ng-show="headerPartial.image">
+			<img ng-src="{{headerPartial.image}}" alt="headerPartial.title">
+		</div>
+		
+		<button class="btn-primary pull-right" ng-if="!editPermissions.getIsNew()" ng-show="editPermissions.getEditMode()" ng-click="delete()">Slett</button>
+
+	</div>
+
+	<div class="row-fluid header-partial-info-wrapper">
+		<div class="header-partial-info span9">
+			<div class="header-partial-short-info">
+
+				<h6 editable="{{editPermissions.getEditMode() || editPermissions.getIsNew()}}" ng-model="headerPartial.description" placeholder="Fyll inn forklaring"></h6>
+
+			</div>
+			<div class="header-partial-long-info" ng-show="headerPartial.information.length || editPermissions.getEditMode()">
+				
+				<div editable="{{editPermissions.getEditMode()}}" ng-model="headerPartial.information" placeholder="Fyll inn ekstra informasjon"></div>
+				
+			</div>	
+			
+			<br>
+			<div class="clearfix"></div>
+
+			<subscribe-button-component ng-hide="editPermissions.getIsAdmin() || editPermissions.getIsNew()" subscription-type="{{headerPartial.subscription.type}}" subscription-id="{{headerPartial.subscription.id}}"></subscribe-button-component>
+		</div>
+
+		<div class="header-partial-facts span3" ng-show="headerPartial.facts.length || editPermissions.getEditMode()">
+			
+			<h6>{{headerPartial.factsTitle}}</h6>
+
+			<div ng-model="headerPartial.facts" editable="{{editPermissions.getEditMode()}}"></div>
+
+		</div>
+	</div>
+	
+	<div ng-include src="'views/partials/newsfeed.html'" ng-if="!editPermissions.getIsNew()"></div>
+
+</div>

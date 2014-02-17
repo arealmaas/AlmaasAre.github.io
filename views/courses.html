@@ -1,0 +1,12 @@
+<div class="courses-view">
+	
+	<h1><back-button-component></back-button-component> Alle fag</h1>
+	<hr>
+	<p>En oversikt over alle fag</p>
+
+	<input type="text" ng-show="courses.length" placeholder="Søk..." autofocus ng-model="searchText" goto-target="#gotoTarget">
+	
+	<div id="gotoTarget" class="tile-group clearfix">
+		<tile-component tile-object="tile" ng-repeat="tile in (filteredItems = (courses | filter:searchText))" ></tile-component>
+	</div>
+</div>
